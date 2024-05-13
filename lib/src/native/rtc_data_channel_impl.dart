@@ -124,6 +124,7 @@ class RTCDataChannelNative extends RTCDataChannel {
     await _stateChangeController.close();
     await _messageController.close();
     await _eventSubscription?.cancel();
+    _eventSubscription = null;
     await WebRTC.invokeMethod('dataChannelClose', <String, dynamic>{
       'peerConnectionId': _peerConnectionId,
       'dataChannelId': _flutterId
